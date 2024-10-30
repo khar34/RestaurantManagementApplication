@@ -249,9 +249,6 @@ namespace QuanLiQuanAnA
             RefreshOrderDetailsGrid();
             CalculateTotalAmount();
 
-            
-
-
         }
 
         private void RefreshOrderDetailsGrid()
