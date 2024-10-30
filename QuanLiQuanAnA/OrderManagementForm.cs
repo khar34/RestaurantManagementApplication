@@ -470,176 +470,21 @@ namespace QuanLiQuanAnA
 
         private void ResetOrder()
         {
-            // Clear all fields and reset the order details
+           
             txtOrderId.Text = string.Empty;
             txtCustomerName.Text = string.Empty;
             txtKhachHangId.Text = string.Empty;
             _orderDetails.Clear();
             dgvOrderDetails.DataSource = null;
-            lblTotalAmount.Text = "0 VNĐ"; // Reset total amount display
-            _selectedTableId = null; // Reset selected table ID
+            lblTotalAmount.Text = "0 VNĐ"; 
+            _selectedTableId = null; 
         }
 
-        
-
-        private void PrintReceipt(object sender, PrintPageEventArgs e)
-        {
-            try
-            {
-                //if (string.IsNullOrEmpty(txtNhapMaDonHang.Text))
-                //{
-                //    MessageBox.Show("Vui lòng chọn đơn hàng cần in.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                //    return;
-                //}
-
-                //int orderId = int.Parse(txtNhapMaDonHang.Text);
-                //var order = _orderService.GetOrderById(orderId);
-                //if (order == null)
-                //{
-                //    MessageBox.Show("Không tìm thấy thông tin đơn hàng.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //    return;
-                //}
-                //frmHoaDon frm = new frmHoaDon();
-                //frm.IdDonHang = int.Parse(txtNhapMaDonHang.Text);
-                //frm.ShowDialog();
-                //using (var headerFont = new Font("Arial", 18, FontStyle.Bold))
-                //using (var regularFont = new Font("Arial", 12))
-                //using (var boldFont = new Font("Arial", 12, FontStyle.Bold))
-                //{
-                //    float yPos = 10;
-                //    int leftMargin = e.MarginBounds.Left;
-                //    float lineHeight = regularFont.GetHeight(e.Graphics);
-                //    int productNameWidth = 200;
-                //    int quantityWidth = 50;
-                //    int priceWidth = 100;
-                //    int totalWidth = 100;
-
-                //    // In thông tin nhà hàng
-                //    e.Graphics.DrawString("QUÁN NHẬU 79", headerFont, Brushes.Black, leftMargin, yPos);
-                //    yPos += lineHeight * 2;
-                //    e.Graphics.DrawString("Địa chỉ: Thôn Xuân Vinh, Vạn Ninh, Khánh Hòa", regularFont, Brushes.Black, leftMargin, yPos);
-                //    yPos += lineHeight;
-                //    e.Graphics.DrawString("SĐT: 0353343110", regularFont, Brushes.Black, leftMargin, yPos);
-                //    yPos += lineHeight * 2;
-
-                //    // In thông tin hóa đơn
-                //    e.Graphics.DrawString("HÓA ĐƠN THANH TOÁN", boldFont, Brushes.Black, leftMargin, yPos);
-                //    yPos += lineHeight * 1.5f;
-
-                //    e.Graphics.DrawString($"Số HĐ: {order.Id}", regularFont, Brushes.Black, leftMargin, yPos);
-                //    yPos += lineHeight;
-                //    e.Graphics.DrawString($"Ngày: {DateTime.Now:dd/MM/yyyy HH:mm}", regularFont, Brushes.Black, leftMargin, yPos);
-                //    yPos += lineHeight;
-                //    e.Graphics.DrawString($"Bàn số: {_tableService.GetTableName(order.IdBan)}", regularFont, Brushes.Black, leftMargin, yPos);
-                //    yPos += lineHeight;
-                //    e.Graphics.DrawString($"Khách hàng: {order.KhachHang?.TenKhach ?? "Khách lẻ"}", regularFont, Brushes.Black, leftMargin, yPos);
-                //    yPos += lineHeight * 2;
-
-                //    // In tiêu đề cột
-                //    e.Graphics.DrawString("Tên món", boldFont, Brushes.Black, leftMargin, yPos);
-                //    e.Graphics.DrawString("SL", boldFont, Brushes.Black, leftMargin + productNameWidth, yPos);
-                //    e.Graphics.DrawString("Đơn giá", boldFont, Brushes.Black, leftMargin + productNameWidth + quantityWidth, yPos);
-                //    e.Graphics.DrawString("Thành tiền", boldFont, Brushes.Black, leftMargin + productNameWidth + quantityWidth + priceWidth, yPos);
-                //    yPos += lineHeight;
-
-                //    // In dòng phân cách
-                //    e.Graphics.DrawLine(Pens.Black, leftMargin, yPos, e.MarginBounds.Right, yPos);
-                //    yPos += lineHeight;
-
-                //    // In các mục trong đơn hàng
-                //    foreach (var detail in order.ChiTietDonHangs)
-                //    {
-                //        var productName = detail.SanPham?.TenSanPham ?? "Unknown Product";
-
-                //        // In tên món (có thể wrap text nếu tên quá dài)
-                //        if (e.Graphics.MeasureString(productName, regularFont).Width > productNameWidth)
-                //        {
-                //            var wrappedProductName = WrapText(productName, regularFont, productNameWidth, e.Graphics);
-                //            foreach (var line in wrappedProductName)
-                //            {
-                //                e.Graphics.DrawString(line, regularFont, Brushes.Black, leftMargin, yPos);
-                //                yPos += lineHeight;
-                //            }
-                //        }
-                //        else
-                //        {
-                //            e.Graphics.DrawString(productName, regularFont, Brushes.Black, leftMargin, yPos);
-                //        }
-
-                //        // In số lượng, đơn giá, thành tiền
-                //        e.Graphics.DrawString(detail.SoLuong.ToString(), regularFont, Brushes.Black, leftMargin + productNameWidth, yPos);
-                //        e.Graphics.DrawString(detail.Gia.ToString("#,##0"), regularFont, Brushes.Black, leftMargin + productNameWidth + quantityWidth, yPos);
-                //        e.Graphics.DrawString((detail.SoLuong * detail.Gia).ToString("#,##0"), regularFont, Brushes.Black, leftMargin + productNameWidth + quantityWidth + priceWidth, yPos);
-                //        yPos += lineHeight;
-                //    }
-
-                //    // In dòng phân cách
-                //    yPos += lineHeight / 2;
-                //    e.Graphics.DrawLine(Pens.Black, leftMargin, yPos, e.MarginBounds.Right, yPos);
-                //    yPos += lineHeight;
-
-                //    // In tổng tiền
-                //    var totalAmount = order.TongTien;
-                //    e.Graphics.DrawString($"Tổng tiền: {totalAmount:#,##0} VND", boldFont, Brushes.Black, leftMargin, yPos);
-                //    yPos += lineHeight * 2;
-
-                //    // In footer
-                //    e.Graphics.DrawString("Cảm ơn quý khách!", new Font("Arial", 10, FontStyle.Italic), Brushes.Black, leftMargin, yPos);
-                //}
-
-                //// Cập nhật ID bàn sau khi in hóa đơn
-                //_orderService.UpdateOrderTableId(order.Id);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Lỗi khi in hóa đơn: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        // Helper function to wrap text within a specified width
-        private List<string> WrapText(string text, Font font, int maxWidth, Graphics graphics)
-        {
-            List<string> lines = new List<string>();
-            StringBuilder currentLine = new StringBuilder();
-
-            foreach (var word in text.Split(' '))
-            {
-                var testLine = currentLine.Length == 0 ? word : currentLine + " " + word;
-                if (graphics.MeasureString(testLine, font).Width > maxWidth)
-                {
-                    lines.Add(currentLine.ToString());
-                    currentLine.Clear();
-                    currentLine.Append(word);
-                }
-                else
-                {
-                    currentLine.Append(currentLine.Length == 0 ? word : " " + word);
-                }
-            }
-
-            if (currentLine.Length > 0)
-            {
-                lines.Add(currentLine.ToString());
-            }
-
-            return lines;
-        }
 
         private void btnPrintReceipt_Click_1(object sender, EventArgs e)
         {
             try
             {
-                //using (var printDoc = new PrintDocument())
-                //{
-                //    printDoc.PrintPage += PrintReceipt;
-
-                //    using (var printPreview = new PrintPreviewDialog())
-                //    {
-                //        printPreview.Document = printDoc;
-                //        printPreview.WindowState = FormWindowState.Maximized;
-                //        printPreview.ShowDialog();
-                //    }
-                //}
                 if (string.IsNullOrEmpty(txtNhapMaDonHang.Text))
                 {
                     MessageBox.Show("Vui lòng chọn đơn hàng cần in.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);

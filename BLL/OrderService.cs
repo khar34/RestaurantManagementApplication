@@ -61,8 +61,8 @@ namespace BLL
         public DonHang GetOrderByTableId(int tableId)
         {
             return _context.DonHangs
-                .Include("KhachHang") // Use string-based includes
-                .Include("ChiTietDonHangs") // Use string-based includes
+                .Include("KhachHang") 
+                .Include("ChiTietDonHangs") 
                 .FirstOrDefault(d => d.IdBan == tableId);
         }
 
@@ -72,25 +72,25 @@ namespace BLL
             {
                 try
                 {
-                    // Fetch the order
+                   
                     var order = _context.DonHangs.Find(orderId);
                     if (order == null)
                     {
                         throw new Exception("Không tìm thấy đơn hàng.");
                     }
 
-                    // Check if the payment amount matches the order total
+                    
                     var totalAmount = CalculateTotalAmount(orderId);
                     if (amount != totalAmount)
                     {
                         throw new Exception("Thanh toán không đủ.");
                     }
 
-                    // Update the order status to 'Paid'
+                    
                     order.Status = "Paid";
                     _context.SaveChanges();
 
-                    // Save payment history in ThanhToan table
+                    
                     var payment = new ThanhToan
                     {
                         IdDonHang = orderId,
@@ -101,7 +101,7 @@ namespace BLL
                     _context.ThanhToans.Add(payment);
                     _context.SaveChanges();
 
-                    // Reset the table status to "Available"
+                    
                     UpdateTableStatus(order.IdBan ?? 0, "Trống");
 
                     transaction.Commit();
@@ -116,9 +116,9 @@ namespace BLL
         }
         public decimal CalculateTotalAmount(int orderId)
         {
-            // Implement your logic to calculate the total amount for the order
+            
             var orderDetails = _context.ChiTietDonHangs.Where(od => od.IdDonHang == orderId);
-            return orderDetails.Sum(od => od.SoLuong * od.Gia); // Assuming ChiTietDonHang has SoLuong and Gia
+            return orderDetails.Sum(od => od.SoLuong * od.Gia); 
         }
 
         
@@ -128,12 +128,12 @@ namespace BLL
             var order = _context.DonHangs.Find(orderId);
             if (order != null)
             {
-                order.Status = newStatus; // Assuming "TrangThai" is the status field
-                _context.SaveChanges(); // Save the changes to the database
+                order.Status = newStatus; 
+                _context.SaveChanges(); 
             }
             else
             {
-                throw new Exception("Đơn hàng không tồn tại."); // Order not found
+                throw new Exception("Đơn hàng không tồn tại."); 
             }
         }
         public DonHang GetOrderById(int orderId)
@@ -141,9 +141,9 @@ namespace BLL
             try
             {
                 return _context.DonHangs
-                    .Include("KhachHang") // String-based include
-                    .Include("ChiTietDonHangs") // String-based include
-                    .Include("ChiTietDonHangs.SanPham") // String-based include
+                    .Include("KhachHang") 
+                    .Include("ChiTietDonHangs") 
+                    .Include("ChiTietDonHangs.SanPham") 
                     .FirstOrDefault(d => d.Id == orderId);
             }
             catch (Exception ex)
@@ -157,7 +157,7 @@ namespace BLL
         {
             try
             {
-                // Create a new payment record
+                
                 var payment = new ThanhToan
                 {
                     IdDonHang = orderId,
@@ -166,20 +166,20 @@ namespace BLL
                     NgayThanhToan = DateTime.Now
                 };
 
-                // Add payment record to the database
+                
                 _context.ThanhToans.Add(payment);
 
-                // Update the order status to 'Paid'
+                
                 var order = _context.DonHangs.Find(orderId);
                 if (order != null)
                 {
-                    order.Status = "Paid"; // Update order status
+                    order.Status = "Paid"; 
                 }
 
-                // Save changes to the database
+                
                 _context.SaveChanges();
 
-                return true; // Indicate success
+                return true; 
             }
             catch (Exception ex)
             {
