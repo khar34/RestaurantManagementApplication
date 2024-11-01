@@ -27,5 +27,43 @@ namespace QuanLiQuanAnA
             this.thanhToanTableAdapter.Fill(this.qUANLIQUANANDBDataSet.ThanhToan);
 
         }
+
+        private void dtpStart1_ValueChanged(object sender, EventArgs e)
+        {
+            FilterThanhToanData();
+        }
+
+        private void dtpEnd1_ValueChanged(object sender, EventArgs e)
+        {
+            FilterThanhToanData();
+        }
+
+        private void dtpStart2_ValueChanged(object sender, EventArgs e)
+        {
+            FilterDonHangData();
+        }
+
+        private void dtpEnd2_ValueChanged(object sender, EventArgs e)
+        {
+            FilterDonHangData();
+        }
+
+        private void FilterThanhToanData()
+        {
+            DateTime startDate = dtpStart1.Value.Date;
+            DateTime endDate = dtpEnd1.Value.Date.AddDays(1).AddTicks(-1); // Kết thúc ngày hiện tại
+
+            // Lọc dữ liệu trong nguồn dữ liệu "ThanhToan"
+            thanhToanBindingSource.Filter = $"NgayThanhToan >= #{startDate}# AND NgayThanhToan <= #{endDate}#";
+        }
+
+        private void FilterDonHangData()
+        {
+            DateTime startDate = dtpStart2.Value.Date;
+            DateTime endDate = dtpEnd2.Value.Date.AddDays(1).AddTicks(-1); // Kết thúc ngày hiện tại
+
+            // Lọc dữ liệu trong nguồn dữ liệu "DonHang"
+            donHangBindingSource1.Filter = $"NgayLap >= #{startDate}# AND NgayLap <= #{endDate}#";
+        }
     }
 }

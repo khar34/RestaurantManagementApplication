@@ -54,6 +54,14 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.dtpStart1 = new System.Windows.Forms.DateTimePicker();
+            this.dtpStart2 = new System.Windows.Forms.DateTimePicker();
+            this.dtpEnd2 = new System.Windows.Forms.DateTimePicker();
+            this.dtpEnd1 = new System.Windows.Forms.DateTimePicker();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label54 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.thanhToanBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.qUANLIQUANANDBDataSet)).BeginInit();
@@ -253,12 +261,96 @@
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
             // 
+            // dtpStart1
+            // 
+            this.dtpStart1.Font = new System.Drawing.Font("SVN-Product Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpStart1.Location = new System.Drawing.Point(12, 759);
+            this.dtpStart1.Name = "dtpStart1";
+            this.dtpStart1.Size = new System.Drawing.Size(282, 28);
+            this.dtpStart1.TabIndex = 5;
+            this.dtpStart1.ValueChanged += new System.EventHandler(this.dtpStart1_ValueChanged);
+            // 
+            // dtpStart2
+            // 
+            this.dtpStart2.Font = new System.Drawing.Font("SVN-Product Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpStart2.Location = new System.Drawing.Point(651, 759);
+            this.dtpStart2.Name = "dtpStart2";
+            this.dtpStart2.Size = new System.Drawing.Size(282, 28);
+            this.dtpStart2.TabIndex = 6;
+            this.dtpStart2.ValueChanged += new System.EventHandler(this.dtpStart2_ValueChanged);
+            // 
+            // dtpEnd2
+            // 
+            this.dtpEnd2.Font = new System.Drawing.Font("SVN-Product Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpEnd2.Location = new System.Drawing.Point(965, 759);
+            this.dtpEnd2.Name = "dtpEnd2";
+            this.dtpEnd2.Size = new System.Drawing.Size(282, 28);
+            this.dtpEnd2.TabIndex = 7;
+            this.dtpEnd2.ValueChanged += new System.EventHandler(this.dtpEnd2_ValueChanged);
+            // 
+            // dtpEnd1
+            // 
+            this.dtpEnd1.Font = new System.Drawing.Font("SVN-Product Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpEnd1.Location = new System.Drawing.Point(342, 759);
+            this.dtpEnd1.Name = "dtpEnd1";
+            this.dtpEnd1.Size = new System.Drawing.Size(282, 28);
+            this.dtpEnd1.TabIndex = 8;
+            this.dtpEnd1.ValueChanged += new System.EventHandler(this.dtpEnd1_ValueChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("SVN-Product Sans", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(8, 725);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(73, 24);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "Từ ngày";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("SVN-Product Sans", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(647, 725);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(73, 24);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "Từ ngày";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("SVN-Product Sans", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(537, 725);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(87, 24);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "Đến ngày";
+            // 
+            // label54
+            // 
+            this.label54.AutoSize = true;
+            this.label54.Font = new System.Drawing.Font("SVN-Product Sans", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label54.Location = new System.Drawing.Point(1160, 725);
+            this.label54.Name = "label54";
+            this.label54.Size = new System.Drawing.Size(87, 24);
+            this.label54.TabIndex = 12;
+            this.label54.Text = "Đến ngày";
+            // 
             // frmPaymentHistory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Snow;
             this.ClientSize = new System.Drawing.Size(1497, 969);
+            this.Controls.Add(this.label54);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.dtpEnd1);
+            this.Controls.Add(this.dtpEnd2);
+            this.Controls.Add(this.dtpStart2);
+            this.Controls.Add(this.dtpStart1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -307,5 +399,13 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.DateTimePicker dtpStart1;
+        private System.Windows.Forms.DateTimePicker dtpStart2;
+        private System.Windows.Forms.DateTimePicker dtpEnd2;
+        private System.Windows.Forms.DateTimePicker dtpEnd1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label54;
     }
 }

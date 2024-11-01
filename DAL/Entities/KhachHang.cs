@@ -21,7 +21,6 @@ namespace DAL.Entities
         [StringLength(100)]
         public string TenKhach { get; set; }
 
-        [Required]
         [StringLength(15)]
         public string SoDienThoai { get; set; }
 
