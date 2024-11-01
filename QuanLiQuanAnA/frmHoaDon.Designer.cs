@@ -49,7 +49,7 @@
             this.Controls.Add(this.reportViewer1);
             this.Name = "frmHoaDon";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmHoaDon";
+            this.Text = "In Hóa Đơn";
             this.Load += new System.EventHandler(this.frmHoaDon_Load);
             this.ResumeLayout(false);
 
