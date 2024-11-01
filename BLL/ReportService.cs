@@ -44,7 +44,7 @@ namespace BLL
                 temp.TenSanPham = chiTiet.SanPham.TenSanPham;
                 temp.SoLuong = chiTiet.SoLuong;
                 temp.Gia = chiTiet.SanPham.Gia;
-                temp.ThanhTien = chiTiet.Gia;
+                temp.ThanhTien = chiTiet.SanPham.Gia * chiTiet.SoLuong;
                 listReport.Add(temp);
             }
             return listReport;
